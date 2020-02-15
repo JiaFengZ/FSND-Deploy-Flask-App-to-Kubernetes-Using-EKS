@@ -16,6 +16,38 @@ The app relies on a secret set as the environment variable `JWT_SECRET` to produ
 1. Fork this project to your Github account.
 2. Locally clone your forked version to begin working on the project.
 
+.\env\Scripts\activate.bat
+.\env\Scripts\deactivate.bat
+
+* 指定版本安装 docker-ce ```18.03.1~ce~3-0~ubuntu```
+* 设置国内加速镜像源 ```DOCKER_OPTS="--registry-mirror=http://hub-mirror.c.163.com"```
+* 安装完毕后启动
+```
+sudo cgroupfs-mount
+// 启动
+sudo service docker start
+// 重启
+sudo service docker restart
+// 检查启动状态
+sudo service docker status
+// 查看docker版本
+sudo docker version
+```
+* 使用dockerfiles 构建镜像
+```
+docker build -t image_name .
+```
+* 删除镜像 ```docker rmi image_name```
+* 删除容器 ``` sudo docker rm -f container_id```
+* 查看容器状态 ```sudo docker ps -a```
+* 查看镜像 ```docker images```
+
+* 运行构建
+```
+sudo docker build . -t=jwt-api-test
+sudo docker run --env-file=env_file -d -p 80:8080 jwt-api-test
+```
+
 ## Dependencies
 
 - Docker Engine
